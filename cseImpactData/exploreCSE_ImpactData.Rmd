@@ -1,0 +1,31 @@
+---
+title: "Exploring CSE Impact Tool data"
+subtitle: "Hampshire area"
+author: "Ben Anderson"
+date: "`r Sys.time()`"
+output: 
+  bookdown::html_document2:
+    fig_caption: yes
+    code_folding: hide
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: TRUE
+bibliography: '`r paste0(here::here(), "/refs.bib")`'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) # by default all code is reported
+
+# create paranms list
+rmdParams <- list()
+
+# Packages ----
+library(data.table)
+library(ggplot2)
+
+# Data sources ----
+rmdParams$csePath <- here::here("..", "publicData", "cseImpactTool")
+
+```
+
