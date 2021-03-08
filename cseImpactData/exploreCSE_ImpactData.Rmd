@@ -48,7 +48,9 @@ The data is modelled:
  
  For Parishes and Local Authorities.
  
-The methodology under-pinning the model is [open and transparent](https://impact-tool.org.uk/methodology).
+The methodology under-pinning the model is [open and transparent](https://impact-tool.org.uk/methodology). 
+
+> Health warning: this is modelled data giving the 'expected' emissions for the area. Although some modeled estimates can be constrained to fit observed data (e.g. LSOA level total residential eletricity & gas consumption); much of it cannot. This means that specific local conditions will lead to the estimates being 'wrong' and in some cases these may be obviously so. This is more likely to be obvious at finer geographical (i.e. parish) levels, especially where 'unusual' patterns of infrastructure pertain.
 
 This brief report explores the data for the Hampshire area:
 
