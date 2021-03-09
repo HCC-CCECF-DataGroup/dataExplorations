@@ -63,7 +63,7 @@ This brief report explores the data for the Hampshire area:
  
 # Local Authority level
 
-```{r loadLA}
+```{r loadLA, warning=FALSE}
 f <- path.expand(paste0(rmdParams$csePath, "/local-authority-all-territorial-absolute.csv.gz"))
 absTerrDT <- data.table::fread(f)
 absTerrDT[, source := "Territorial absolute"]
@@ -108,8 +108,6 @@ solent_laAbsDT <- laAbsDT[name %like% "Hampshire" |
                             name %like% "Isle of Wight" |
                             name %like% "Southampton"]
 
-table(solent_laAbsDT$name)
-
 f <- path.expand(paste0(rmdParams$csePath, "/local-authority-all-territorial-per-household.csv.gz"))
 phTerrDT <- data.table::fread(f)
 phTerrDT[, source := "Territorial per household"]
@@ -131,6 +129,12 @@ solent_laPhDT <- laPhDT[name %like% "Hampshire" |
                             name %like% "Portsmouth" |
                             name %like% "Isle of Wight" |
                             name %like% "Southampton"]
+
+t <- solent_laAbsDT[, .(nVariables = .N), keyby = .(name)]
+
+ft <- flextable(t)
+
+set_caption(ft, caption = "Local Authorities included")
 ```
 
 Any missing?
