@@ -196,6 +196,8 @@ ggplot2::ggplot(dt, aes(x = name, y = variable, fill = tCO2e)) +
 
 # Parish level
 
+tbc
+
 # R Environment
 
 Packages used:
