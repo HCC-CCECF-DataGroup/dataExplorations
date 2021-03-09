@@ -76,12 +76,34 @@ actmDT <- melt(absConsDT)
 
 laAbsDT <- rbind(atmDT, actmDT)
 
+# Local Council
+# Isle of Wight
+# Southampton
+# Portsmouth
+# Basingstoke & Deane
+# East Hampshire
+# Eastleigh
+# Fareham
+# Gosport
+# Hart
+# Havant
+# New Forest
+# Rushmoor
+# Test Valley
+# Winchester
+
 solent_laAbsDT <- laAbsDT[name %like% "Hampshire" |
                             name %like% "Basingstoke" |
-                            name == "Hart" |
                             name %like% "Eastleigh" |
+                            name %like% "Fareham" |
+                            name %like% "Gosport" |
+                            name == "Hart" |
+                            name == "Havant" |
                             name %like% "New Forest" |
+                            name == "Rushmoor" |
                             name %like% "Test Valley" |
+                            name %like% "Winchester" |
+                            name %like% "Southampton" |
                             name %like% "Portsmouth" |
                             name %like% "Isle of Wight" |
                             name %like% "Southampton"]
