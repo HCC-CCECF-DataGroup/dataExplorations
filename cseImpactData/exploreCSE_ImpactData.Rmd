@@ -52,6 +52,8 @@ The methodology under-pinning the model is [open and transparent](https://impact
 
 > Health warning: this is modelled data giving the 'expected' emissions for the area. Although some modeled estimates can be constrained to fit observed data (e.g. LSOA level total residential eletricity & gas consumption); much of it cannot. This means that specific local conditions will lead to the estimates being 'wrong' and in some cases these may be obviously so. This is more likely to be obvious at finer geographical (i.e. parish) levels, especially where 'unusual' patterns of infrastructure pertain.
 
+> As a result these estimates are best viewed as the 'expected' emissions "all other things being equal". If we could actually measure the emissions we might find 'good' places which are doing much better than 'expected' (or worse). It would then be interesting to find out why...
+
 This brief report explores the data for the Hampshire area:
 
  * Hampshire County
@@ -115,7 +117,7 @@ Any missing?
 
 Figure \@ref(fig:terrEmAbs) shows the absolute values for territorial emissions. The plot is visually dominated by 'power generation' in the New Forest.
 
-```{r terrEmAbs, fig.caption = "Wider Hampshire area total territorial emissions (T CO2e 2019-20)"}
+```{r terrEmAbsTab }
 dt <- solent_laAbsDT[source == "Territorial absolute", 
                      .(tCO2e = mean(value)),
                      keyby = .(variable, name)] 
@@ -126,7 +128,9 @@ ft <- set_caption(ft,
             caption = "Territorial emissions: absolute T CO2e")
 ft <- colformat_num(ft, 2:10, digits = 2)
 flextable::autofit(ft)
+```
 
+```{r terrEmAbs, fig.cap = "Wider Hampshire area total territorial emissions (T CO2e 2019-20)"}
 ggplot2::ggplot(dt, aes(x = name, y = variable, fill = tCO2e)) +
   geom_tile() +
   scale_fill_continuous(low = "green", high = "red") +
@@ -143,7 +147,7 @@ Consumption emissions are most likely to be driven by differences in socio-econo
 
 Figure \@ref(fig:consEmAbs) shows the absolute values while figure \@ref(fig:consEmPerHH) shows per household values.
 
-```{r consEmAbs, fig.caption = "Wider Hampshire area total consumption emissions (T CO2e 2019-20)"}
+```{r consEmAbsTab}
 dt <- solent_laAbsDT[source == "Consumption absolute", 
                      .(tCO2e = mean(value)),
                      keyby = .(variable, name)] 
@@ -154,7 +158,9 @@ ft <- set_caption(ft,
             caption = "Consumption emissions: absolute T CO2e")
 ft <- colformat_num(ft, 2:10, digits = 2)
 flextable::autofit(ft)
+```
 
+```{r consEmAbs, fig.cap = "Wider Hampshire area total consumption emissions (T CO2e 2019-20)"}
 ggplot2::ggplot(dt, aes(x = name, y = variable, fill = tCO2e)) +
   geom_tile() +
   scale_fill_continuous(low = "green", high = "red") +
@@ -165,7 +171,7 @@ ggplot2::ggplot(dt, aes(x = name, y = variable, fill = tCO2e)) +
          y = "Emissions category")
 ```
 
-```{r consEmPerHH, fig.caption = "Wider Hampshire area per household consumption emissions (T CO2e 2019-20)"}
+```{r consEmPerHH, fig.cap = "Wider Hampshire area per household consumption emissions (T CO2e 2019-20)"}
 dt <- solent_laPhDT[source %like% "Consumption", 
                      .(tCO2e = mean(value)),
                      keyby = .(variable, name)] 
